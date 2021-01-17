@@ -10,6 +10,8 @@ namespace Vidly.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies
+        private ApplicationDbContext _context;
+        
         public ActionResult Index()
         {
             return View();
