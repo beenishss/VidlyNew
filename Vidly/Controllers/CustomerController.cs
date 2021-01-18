@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModel;
 using System.Data.Entity;
 
 namespace Vidly.Controllers
@@ -35,6 +36,16 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             return View(customer);
         }
+        public ActionResult NewForm()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel()
+            {
+                MembershipTypes = membershipTypes
+
+            };
+           return View(viewModel);
+        }
         
         public List<Customer> GetCustomers()
         {
@@ -44,6 +55,39 @@ namespace Vidly.Controllers
                 new Customer{Id=2,Name="Momina"}
             };
             return customer;
+        }
+        public ActionResult Save(Customer customer)
+        {
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+               
+            }
+            else
+            {
+                var custInDb = _context.Customers.Single(c => c.Id ==customer.Id);
+                custInDb.isSubscribedToNewsLetter = customer.isSubscribedToNewsLetter;
+                custInDb.Name = customer.Name;
+                custInDb.MembershipTypeId = customer.MembershipTypeId;
+                custInDb.Birthdate = customer.Birthdate;
+                
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customer");
+        }
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+            //as the form requires viewmodel so creating that
+            var viewModel = new CustomerFormViewModel()
+            {
+                customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+
+            };
+            return View("NewForm", viewModel);
         }
     }
 }

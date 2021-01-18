@@ -219,6 +219,14 @@
     <Compile Include="Migrations\202101170436108_addgenre.Designer.cs">
       <DependentUpon>202101170436108_addgenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101170437169_populateGenre.cs" />
+    <Compile Include="Migrations\202101170437169_populateGenre.Designer.cs">
+      <DependentUpon>202101170437169_populateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101170442054_datetime.cs" />
+    <Compile Include="Migrations\202101170442054_datetime.Designer.cs">
+      <DependentUpon>202101170442054_datetime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -229,6 +237,8 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\MovieGenreViewModel.cs" />
     <Compile Include="ViewModel\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +301,10 @@
     <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Detail.cshtml" />
+    <Content Include="Views\Customer\NewForm.cshtml" />
+    <Content Include="Views\Movies\SaveMovie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -341,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101170436108_addgenre.resx">
       <DependentUpon>202101170436108_addgenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101170437169_populateGenre.resx">
+      <DependentUpon>202101170437169_populateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101170442054_datetime.resx">
+      <DependentUpon>202101170442054_datetime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,8 +12,11 @@ namespace Vidly.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
+        [Display(Name = "Is Subscribed To NewsLetter")]
         public bool isSubscribedToNewsLetter { get; set; }
         public MembershipType MembershipType { get; set; }
+        [Display(Name="Membership Type")]
         public byte MembershipTypeId { get; set; }
         public DateTime? Birthdate { get; set; }
     }
